@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,17 +20,21 @@ public class App
             System.out.println("3 - Sair");
             System.out.println("Sua escolha: ");
             escolha = scan.nextInt();
+            scan.nextLine();
             if(escolha == 1){
                 System.out.println("Digite sua matrícula: ");
-                String matricula = scan.next();
+                String matricula = scan.nextLine();
+                boolean achouAluno = false;
                 List<Aluno> listaAlunos = gerenciamento.getListaAlunos();
                 for (Aluno aluno : listaAlunos) {
                     if(aluno.getMatricula().equals(matricula)){
                         System.out.println("Logado como aluno");
+                        achouAluno = true;
                         aluno.listaOpcoesAluno();
-                    }else{
-                        System.out.println("Matrícula não encontrada");
                     }
+                }
+                if(!achouAluno){
+                    System.out.println("Aluno não encontrado");
                 }
             } else if(escolha == 2){
                 Administrador admin = new Administrador();

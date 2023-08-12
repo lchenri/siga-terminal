@@ -39,7 +39,11 @@ public class Gerenciamento {
     }
 
     public List<Aluno> getListaAlunos() {
-        return listaAlunos;
+        return this.listaAlunos;
+    }
+
+    public List<Materia> getListaMaterias() {
+        return this.listaMaterias;
     }
     
 }
