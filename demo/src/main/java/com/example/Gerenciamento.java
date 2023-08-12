@@ -42,6 +42,19 @@ public class Gerenciamento {
         return this.listaAlunos;
     }
 
+    public void imprimeAlunos(){
+        if(this.listaAlunos.isEmpty()){
+            System.out.println("Não há alunos cadastrados");
+        } else {
+            for (Aluno aluno : listaAlunos) {
+                System.out.println("--------------------------------------------------");
+                System.out.println("Nome: " + aluno.getNome());
+                System.out.println("Matrícula: " + aluno.getMatricula());
+                System.out.println("--------------------------------------------------");
+            }
+        }
+    }
+
     public List<Materia> getListaMaterias() {
         return this.listaMaterias;
     }

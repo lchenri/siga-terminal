@@ -29,6 +29,10 @@ public class Aluno {
         this.matricula = scan.nextLine();
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public String getMatricula() {
         return matricula;
     }

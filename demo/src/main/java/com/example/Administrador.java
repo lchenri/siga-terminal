@@ -16,7 +16,8 @@ public class Administrador {
         do {
             System.out.println("1 - Cadastrar matéria");
             System.out.println("2 - Cadastrar aluno");
-            System.out.println("3 - Sair");
+            System.out.println("3 - Alunos Cadastrados");
+            System.out.println("4 - Sair");
             System.out.println("Sua escolha: ");
             escolha = scan.nextInt();
             if(escolha == 1){
@@ -26,11 +27,13 @@ public class Administrador {
                 Aluno aluno = new Aluno();
                 App.gerenciamento.addAluno(aluno);
             } else if(escolha == 3){
+                App.gerenciamento.imprimeAlunos();
+            } else if(escolha == 4){
                 System.out.println("Saindo...");
             } else {
                 System.out.println("Escolha inválida");
             }
-        } while (escolha != 3);
+        } while (escolha != 4);
     }
 
 }

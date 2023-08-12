@@ -34,7 +34,9 @@ public class App
                     }
                 }
                 if(!achouAluno){
+                    System.out.println();
                     System.out.println("Aluno não encontrado");
+                    System.out.println();
                 }
             } else if(escolha == 2){
                 Administrador admin = new Administrador();
