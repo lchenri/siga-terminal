@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Disciplina {
 
     private String nome;
-    
+
     private String codigo;
 
     private String professor;
@@ -48,18 +48,16 @@ public class Disciplina {
         String codigoDisciplina = this.codigo.substring(3, 6);
         for (char caractere : codigoDisciplina.toCharArray()) {
             if(!Character.isDigit(caractere)){
-                System.out.println(caractere +"Não é dígito");
                 return false;
             }
         }
-        System.out.println("Deu certo. Retorna True");
         return true;
     }
 
     private boolean verificaDisponibilidadeCodigo(){
         List<Disciplina> listaDisciplinas = App.gerenciamento.getListaDisciplinas();
-        for (Disciplina materia : listaDisciplinas) {
-            if(materia.getCodigo().equals(this.codigo)){
+        for (Disciplina disciplina : listaDisciplinas) {
+            if(disciplina.getCodigo().equals(this.codigo)){
                 return false;
             }
         }
@@ -88,8 +86,15 @@ public class Disciplina {
     }
 
     private void setDia(){
+        String auxDia;
         System.out.println("Digite o dia da disciplina: ");
-        this.dia = scan.nextLine();
+        //this.dia = scan.nextLine();
+        auxDia = scan.nextLine();
+        auxDia = auxDia.trim();
+        String auxDiaSplit[] = auxDia.split("/");
+        for(int i = 0; i < auxDiaSplit.length; i++){
+            auxDiaSplit[i] = auxDiaSplit[i].trim();
+        }
     }
 
     private void setHorario() {

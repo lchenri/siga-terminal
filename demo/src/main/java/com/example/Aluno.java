@@ -12,7 +12,7 @@ public class Aluno {
 
     private Scanner scan = new Scanner(System.in);
 
-    private List<Disciplina> listaMaterias = new ArrayList<>();
+    private List<Disciplina> listaDisciplinas = new ArrayList<>();
 
     public Aluno(){
         setNome();
@@ -78,20 +78,24 @@ public class Aluno {
             escolha = scan.nextInt();
             scan.nextLine();
             if(escolha == 1){
-                System.out.println("Listando disciplinas...");
-                App.gerenciamento.listarDisciplinas();
+                if(App.gerenciamento.disciplinaIsEmpty()){
+                    System.out.println("Não há disciplinas cadastradas.");
+                } else{
+                    System.out.println("Listando disciplinas...");
+                    App.gerenciamento.listarDisciplinas();
+                }
             } else if(escolha == 2){
                 solicitaMatricula();
             } else if(escolha == 3){
                 System.out.println("Listando disciplinas matriculadas...");
-                for (Disciplina materia : listaMaterias) {
+                for (Disciplina disciplina : listaDisciplinas) {
                     System.out.println("--------------------------------------------------");
-                    System.out.println("Nome: " + materia.getNome());
-                    System.out.println("Código: " + materia.getCodigo());
-                    System.out.println("Professor: " + materia.getProfessor());
-                    System.out.println("Dia: " + materia.getDia());
-                    System.out.println("Horário: " + materia.getHorario());
-                    System.out.println("Sala: " + materia.getSala());
+                    System.out.println("Nome: " + disciplina.getNome());
+                    System.out.println("Código: " + disciplina.getCodigo());
+                    System.out.println("Professor: " + disciplina.getProfessor());
+                    System.out.println("Dia: " + disciplina.getDia());
+                    System.out.println("Horário: " + disciplina.getHorario());
+                    System.out.println("Sala: " + disciplina.getSala());
                     System.out.println("--------------------------------------------------");
                 }
             } else if (escolha ==4) {
@@ -125,34 +129,34 @@ public class Aluno {
         return false;
     }
 
-    private void verificaConflitoHorario(Disciplina materia){
+    private void verificaConflitoHorario(Disciplina disciplina){
         boolean conflito = false;
-        for (Disciplina materiaAluno : listaMaterias) {
-            if(verificaDia(materia, materiaAluno)){
+        for (Disciplina disciplinaAluno : listaDisciplinas) {
+            if(verificaDia(disciplina, disciplinaAluno)){
                 conflito = true;
             }
         }
         if(conflito){
             System.out.println("Conflito de horário!");
         } else {
-            listaMaterias.add(materia);
+            listaDisciplinas.add(disciplina);
             System.out.println("Matrícula realizada com sucesso.");
         }
     }
 
     private void solicitaMatricula(){
-        System.out.println("Digite o código da matéria que deseja se matricular:");
+        System.out.println("Digite o código da disciplina que deseja se matricular:");
         String codigo = scan.nextLine();
         boolean achouMateria = false;
-        List<Disciplina> listaMaterias = App.gerenciamento.getListaDisciplinas();
-        for (Disciplina materia : listaMaterias) {
-            if(materia.getCodigo().equals(codigo)){
+        List<Disciplina> listaDisciplinas = App.gerenciamento.getListaDisciplinas();
+        for (Disciplina disciplina : listaDisciplinas) {
+            if(disciplina.getCodigo().equals(codigo)){
                 achouMateria = true;
-                verificaConflitoHorario(materia);
+                verificaConflitoHorario(disciplina);
             }
         }
         if(!achouMateria){
-            System.out.println("Matéria não encontrada.");
+            System.out.println("Disciplina não encontrada.");
         }
     }
 
