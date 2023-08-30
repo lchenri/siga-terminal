@@ -7,21 +7,21 @@ public class Gerenciamento {
     
     private List<Aluno> listaAlunos = new ArrayList<>();
 
-    private List<Materia> listaMaterias = new ArrayList<>();
+    private List<Disciplina> listaDisciplinas = new ArrayList<>();
 
     public Gerenciamento(){
 
     }
 
-    public void listarMaterias(){
-        for (Materia materia : listaMaterias) {
+    public void listarDisciplinas(){
+        for (Disciplina disciplina : listaDisciplinas) {
             System.out.println("--------------------------------------------------");
-            System.out.println("Nome: " + materia.getNome());
-            System.out.println("Código: " + materia.getCodigo());
-            System.out.println("Professor: " + materia.getProfessor());
-            System.out.println("Dia: " + materia.getDia());
-            System.out.println("Horário: " + materia.getHorario());
-            System.out.println("Sala: " + materia.getSala());
+            System.out.println("Nome: " + disciplina.getNome());
+            System.out.println("Código: " + disciplina.getCodigo());
+            System.out.println("Professor: " + disciplina.getProfessor());
+            System.out.println("Dia: " + disciplina.getDia());
+            System.out.println("Horário: " + disciplina.getHorario());
+            System.out.println("Sala: " + disciplina.getSala());
             System.out.println("--------------------------------------------------");
         }
     }
@@ -30,12 +30,12 @@ public class Gerenciamento {
         listaAlunos.add(aluno);
     }
 
-    public void addMateria(Materia materia){
-        listaMaterias.add(materia);
+    public void addDisciplina(Disciplina disciplina){
+        listaDisciplinas.add(disciplina);
     }
 
-    public boolean materiaIsEmpty(){
-        return listaMaterias.isEmpty();
+    public boolean disciplinaIsEmpty(){
+        return listaDisciplinas.isEmpty();
     }
 
     public List<Aluno> getListaAlunos() {
@@ -44,7 +44,7 @@ public class Gerenciamento {
 
     public void imprimeAlunos(){
         if(this.listaAlunos.isEmpty()){
-            System.out.println("Não há alunos cadastrados");
+            System.out.println("Não há alunos cadastrados.");
         } else {
             for (Aluno aluno : listaAlunos) {
                 System.out.println("--------------------------------------------------");
@@ -55,8 +55,9 @@ public class Gerenciamento {
         }
     }
 
-    public List<Materia> getListaMaterias() {
-        return this.listaMaterias;
+    public List<Disciplina> getListaDisciplinas() {
+        return this.listaDisciplinas;
     }
+
     
 }
