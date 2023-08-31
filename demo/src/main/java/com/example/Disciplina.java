@@ -86,20 +86,24 @@ public class Disciplina {
     }
 
     private void setDia(){
-        String auxDia;
-        System.out.println("Digite o dia da disciplina: ");
-        //this.dia = scan.nextLine();
-        auxDia = scan.nextLine();
-        auxDia = auxDia.trim();
-        String auxDiaSplit[] = auxDia.split("/");
-        for(int i = 0; i < auxDiaSplit.length; i++){
-            auxDiaSplit[i] = auxDiaSplit[i].trim();
-        }
+        System.out.println("Digite os dias da disciplina (Exemplo: Segunda-Feira / Terca-feira): ");
+        this.dia = scan.nextLine();
+
     }
 
     private void setHorario() {
-        System.out.println("Digite o horário da disciplina: ");
-        this.horario = scan.nextLine();
+        String auxiliarInput;
+        String copiaDia = this.dia;
+        String diasDeAula[] = copiaDia.trim().split("/");
+        for(int i = 0; i < diasDeAula.length; i++){
+            System.out.println("Digite o horário da disciplina para o dia " + diasDeAula[i] + " :");
+            auxiliarInput = scan.nextLine();
+            if(this.horario != null)
+                this.horario += auxiliarInput;
+            else{
+                this.horario = auxiliarInput + " / ";
+            }
+        }
     }
 
     private boolean verificaDisponibilidadeSala(){

@@ -93,8 +93,14 @@ public class Aluno {
                     System.out.println("Nome: " + disciplina.getNome());
                     System.out.println("Código: " + disciplina.getCodigo());
                     System.out.println("Professor: " + disciplina.getProfessor());
-                    System.out.println("Dia: " + disciplina.getDia());
-                    System.out.println("Horário: " + disciplina.getHorario());
+                    String auxiliarDia[] = disciplina.getDia().split("/");
+                    String auxiliarHora[] = disciplina.getHorario().split("/");
+                    System.out.println("Dias de aula: ");
+                    for(int i = 0; i < 2; i++){
+                        auxiliarDia[i] = auxiliarDia[i].trim();
+                        auxiliarHora[i] = auxiliarHora[i].trim();
+                        System.out.println(auxiliarDia[i] + " : " + auxiliarHora[i]);
+                    }
                     System.out.println("Sala: " + disciplina.getSala());
                     System.out.println("--------------------------------------------------");
                 }
