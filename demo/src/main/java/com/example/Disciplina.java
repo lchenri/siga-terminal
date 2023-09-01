@@ -88,7 +88,6 @@ public class Disciplina {
     private void setDia(){
         System.out.println("Digite os dias da disciplina (Exemplo: Segunda-Feira / Terca-feira): ");
         this.dia = scan.nextLine();
-
     }
 
     private void setHorario() {
@@ -96,9 +95,11 @@ public class Disciplina {
         String copiaDia = this.dia;
         String diasDeAula[] = copiaDia.trim().split("/");
         for(int i = 0; i < diasDeAula.length; i++){
+            diasDeAula[i] = diasDeAula[i].trim();
             System.out.println("Digite o horário da disciplina para o dia " + diasDeAula[i] + " :");
             auxiliarInput = scan.nextLine();
             if(this.horario != null)
+                //poderia usar String builder aqui!
                 this.horario += auxiliarInput;
             else{
                 this.horario = auxiliarInput + " / ";
@@ -109,7 +110,7 @@ public class Disciplina {
     private boolean verificaDisponibilidadeSala(){
         List<Disciplina> listadisciplinas = App.gerenciamento.getListaDisciplinas();
         for (Disciplina disciplina : listadisciplinas) {
-            if(disciplina.getDia().equals(this.dia) && disciplina.getHorario().equals(this.horario) && disciplina.getSala().equals(this.sala)){
+            if(disciplina.getDia().replace(" ", "").equals(this.dia.replace(" ", "")) && disciplina.getHorario().replace(" ", "").equals(this.horario.replace(" ", "")) && disciplina.getSala().replace(" ", "").equals(this.sala.replace(" ", ""))){
                 return false;
             }
         }

@@ -56,7 +56,6 @@ public class Gerenciamento {
                 System.out.println("--------------------------------------------------");
                 System.out.println("Nome: " + aluno.getNome());
                 System.out.println("Matrícula: " + aluno.getMatricula());
-                System.out.println("--------------------------------------------------");
             }
         }
     }
