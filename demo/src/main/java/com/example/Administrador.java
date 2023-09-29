@@ -22,12 +22,12 @@ public class Administrador {
             escolha = scan.nextInt();
             if(escolha == 1){
                 Disciplina disciplina = new Disciplina();
-                App.gerenciamento.addDisciplina(disciplina);
+                Disciplina.addDisciplina(disciplina);
             } else if(escolha == 2){
                 Aluno aluno = new Aluno();
-                App.gerenciamento.addAluno(aluno);
+                Aluno.addAluno(aluno);
             } else if(escolha == 3){
-                App.gerenciamento.imprimeAlunos();
+                Aluno.imprimeAlunos();
             } else if(escolha == 4){
                 System.out.println("Saindo...");
             } else {

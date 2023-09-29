@@ -14,9 +14,31 @@ public class Aluno {
 
     private List<Disciplina> listaDisciplinas = new ArrayList<>();
 
+    private static List<Aluno> listaAlunos = new ArrayList<>();
+
     public Aluno(){
         setNome();
         setMatricula();
+    }
+
+    public static void addAluno(Aluno aluno){
+        listaAlunos.add(aluno);
+    }
+
+    public static List<Aluno> getListaAlunos() {
+        return listaAlunos;
+    }
+
+    public static void imprimeAlunos(){
+        if(listaAlunos.isEmpty()){
+            System.out.println("Não há alunos cadastrados.");
+        } else {
+            for (Aluno aluno : listaAlunos) {
+                System.out.println("--------------------------------------------------");
+                System.out.println("Nome: " + aluno.getNome());
+                System.out.println("Matrícula: " + aluno.getMatricula());
+            }
+        }
     }
 
     private void setNome() {
@@ -78,11 +100,11 @@ public class Aluno {
             escolha = scan.nextInt();
             scan.nextLine();
             if(escolha == 1){
-                if(App.gerenciamento.disciplinaIsEmpty()){
+                if(Disciplina.disciplinaIsEmpty()){
                     System.out.println("Não há disciplinas cadastradas.");
                 } else{
                     System.out.println("Listando disciplinas...");
-                    App.gerenciamento.listarDisciplinas();
+                    Disciplina.listarDisciplinas();
                 }
             } else if(escolha == 2){
                 solicitaMatricula();
@@ -154,7 +176,7 @@ public class Aluno {
         System.out.println("Digite o código da disciplina que deseja se matricular:");
         String codigo = scan.nextLine();
         boolean achouMateria = false;
-        List<Disciplina> listaDisciplinas = App.gerenciamento.getListaDisciplinas();
+        List<Disciplina> listaDisciplinas = Disciplina.getListaDisciplinas();
         for (Disciplina disciplina : listaDisciplinas) {
             if(disciplina.getCodigo().equals(codigo)){
                 achouMateria = true;

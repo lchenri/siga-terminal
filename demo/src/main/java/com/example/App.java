@@ -1,6 +1,5 @@
 package com.example;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,8 +7,6 @@ public class App
 {
 
     private static Scanner scan = new Scanner(System.in);
-
-    protected static Gerenciamento gerenciamento = new Gerenciamento();
 
     public static void inicio() {
         int escolha;
@@ -25,7 +22,7 @@ public class App
                 System.out.println("Digite sua matrícula: ");
                 String matricula = scan.nextLine();
                 boolean achouAluno = false;
-                List<Aluno> listaAlunos = gerenciamento.getListaAlunos();
+                List<Aluno> listaAlunos = Aluno.getListaAlunos();
                 for (Aluno aluno : listaAlunos) {
                     if(aluno.getMatricula().equals(matricula)){
                         System.out.println("Logado como aluno.");

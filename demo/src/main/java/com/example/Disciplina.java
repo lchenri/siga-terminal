@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class Disciplina {
 
     private String sala;
 
+    private static List<Disciplina> listaDisciplinas = new ArrayList<>();
 
     private Scanner scan = new Scanner(System.in);
 
@@ -27,6 +29,37 @@ public class Disciplina {
         setDia();
         setHorario();
         setSala();
+    }
+
+    public static void listarDisciplinas(){
+        for (Disciplina disciplina : listaDisciplinas) {
+            System.out.println("--------------------------------------------------");
+            System.out.println("Nome: " + disciplina.getNome());
+            System.out.println("Código: " + disciplina.getCodigo());
+            System.out.println("Professor: " + disciplina.getProfessor());
+            String auxiliarDia[] = disciplina.getDia().split("/");
+            String auxiliarHora[] = disciplina.getHorario().split("/");
+            System.out.println("Dias de aula: ");
+            for(int i = 0; i < 2; i++){
+                auxiliarDia[i] = auxiliarDia[i].trim();
+                auxiliarHora[i] = auxiliarHora[i].trim();
+                System.out.println(auxiliarDia[i] + " : " + auxiliarHora[i]);
+            }
+            System.out.println("Sala: " + disciplina.getSala());
+            System.out.println("--------------------------------------------------");
+        }
+    }
+
+    public static void addDisciplina(Disciplina disciplina){
+        listaDisciplinas.add(disciplina);
+    }
+
+    public static List<Disciplina> getListaDisciplinas() {
+        return listaDisciplinas;
+    }
+
+    public static boolean disciplinaIsEmpty(){
+        return listaDisciplinas.isEmpty();
     }
 
     private void setNome() {
@@ -55,7 +88,7 @@ public class Disciplina {
     }
 
     private boolean verificaDisponibilidadeCodigo(){
-        List<Disciplina> listaDisciplinas = App.gerenciamento.getListaDisciplinas();
+        List<Disciplina> listaDisciplinas = Disciplina.getListaDisciplinas();
         for (Disciplina disciplina : listaDisciplinas) {
             if(disciplina.getCodigo().equals(this.codigo)){
                 return false;
@@ -108,7 +141,7 @@ public class Disciplina {
     }
 
     private boolean verificaDisponibilidadeSala(){
-        List<Disciplina> listadisciplinas = App.gerenciamento.getListaDisciplinas();
+        List<Disciplina> listadisciplinas = Disciplina.getListaDisciplinas();
         for (Disciplina disciplina : listadisciplinas) {
             if(disciplina.getDia().replace(" ", "").equals(this.dia.replace(" ", "")) && disciplina.getHorario().replace(" ", "").equals(this.horario.replace(" ", "")) && disciplina.getSala().replace(" ", "").equals(this.sala.replace(" ", ""))){
                 return false;
